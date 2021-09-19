@@ -32,5 +32,10 @@ let products=[
 router.get('/', function(req, res, next) {
   res.render('index', { products});
 });
-
+router.get('/login',(req,res)=>{
+  res.render('userLogin')
+})
+router.get('/signup',(req,res)=>{
+  res.render('userSignup')
+})
 module.exports = router;
