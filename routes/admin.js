@@ -11,6 +11,7 @@ router.get('/', function(req, res, next) {
 router.post("/adminlogin",(req,res)=>{
   console.log("az");
 console.log(req.body.username)
+console.log(req.body.password);
 })
 router.get("/home",function(req,res,next){
 
