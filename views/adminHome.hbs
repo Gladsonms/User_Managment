@@ -26,14 +26,14 @@
 </header>
 <section>
 <div class="mt-5 mb-5 text-align-center">Users</div>
+<div>
+  <form action="/admin/add-user" method="GET">
+  <button class="btn btn-primary">ADD</button>
+  </form>
+</div>
   <container>
-        <button type="button" class="btn btn-sucecss btn-sm px-3">
-            <a href="/admin/add-user" style="text-decoration: none;">
-            
-          <i class="bi bi-trash-fill">Add</i>
-            </a>
-          
-        </button>
+        
+
     <table class="table align-middle">
   <thead>
     <tr>
@@ -41,50 +41,36 @@
       <th scope="col">Username</th>
       <th scope="col">Email</th>
       <th scope="col">Phone</th>
+      <th scope="col">Options</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Sit</td>
-      <td>Amet</td>
-      <td>
-        <button type="button" class="btn btn-danger btn-sm px-3">
-          <i class="bi bi-trash-fill"></i>
-        </button>
-      </td>
-    </tr>
+ 
     <tr>
       <th scope="row">2</th>
       <td>Adipisicing</td>
       <td>Elit</td>
+      <td>9826877798</td>
       <td>
         <button type="button" class="btn btn-danger btn-sm px-3">
           <a href="admin/delete-user" style="text-decoration: none;">
-          <i class="bi bi-trash-fill">delete</i>
+          <span style="text:white">delete</span>
           
           </a>
         </button>
         <button type="button" class="btn btn-warning btn-sm px-3">
             <a href="admin/edit-user" style="text-decoration: none;">
             
-          <i class="bi bi-trash-fill">Edit</i>
+          <span style="text:white">Edit</span>
             </a>
           
         </button>
       </td>
     </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Hic</td>
-      <td>Fugiat</td>
-      <td>
-        <button type="button" class="btn btn-danger btn-sm px-3">
-          <i class="fas fa-times"></i>
-        </button>
-      </td>
-    </tr>
+    
   </tbody>
 </table>
+
+
   </container>
 </section>

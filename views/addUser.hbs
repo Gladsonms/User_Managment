@@ -1,45 +1,33 @@
-<section>
-    <form method="POST" enctype="multipart/form-data" action="admin/add-user">
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">Username</label>
-      <input type="name" class="form-control" id="inputEmail4" placeholder="username">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputPassword4">Phone Number</label>
-      <input type="number" class="form-control" id="inputPassword4" placeholder="Phone number">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputPassword4">Email</label>
-      <input type="email" class="form-control" id="inputPassword4" placeholder="email">
-    </div>
+
+<section class="mt-5 ml-3 mr-3">
+  <div class="pt-5">
+  <div class="card container pt-4 pb-4">
+  <form action="">
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Email address</label>
+  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">User Name</label>
+  <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="User name">
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
+  <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Phone Number">
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Password</label>
+  <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="password">
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Confirm Password</label>
+  <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Confirm password">
+</div>
+<div class="col-auto">
+    <button type="submit" class="btn btn-primary mb-3">Add User</button>
   </div>
-  
-  {{!-- <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputCity">City</label>
-      <input type="text" class="form-control" id="inputCity">
-    </div>
-    <div class="form-group col-md-4">
-      <label for="inputState">State</label>
-      <select id="inputState" class="form-control">
-        <option selected>Choose...</option>
-        <option>...</option>
-      </select>
-    </div>
-    <div class="form-group col-md-2">
-      <label for="inputZip">Zip</label>
-      <input type="text" class="form-control" id="inputZip">
-    </div>
-  </div> --}}
-  {{!-- <div class="form-group">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Check me out
-      </label>
-    </div>
-  </div> --}}
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+  </form>
+</div>
+</div>
+
 </section>

@@ -41,7 +41,7 @@ router.get("/add-user", (req, res) => {
   res.render("addUser");
 })
 router.post("/add-user", (req, res) => {
-  console.log(req.body);
+  
 })
 router.get('/logout',(req,res)=>{
   req.session.destroy()
