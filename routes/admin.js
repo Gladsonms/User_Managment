@@ -1,19 +1,32 @@
 var express = require('express');
+const session = require('express-session');
 const { localsAsTemplateData } = require('hbs');
 const { render } = require('../app');
 var router = express.Router();
-
+let isLoggedIn;
 let adminUsername = "admin";
 let adminPassword = "admin"
 /* GET users listing. */
 router.get('/', function (req, res, next) {
+  console.log("hshi");
+  console.log(req,session.isLoggedIn);
+  if(req.session.isLoggedIn)
+  {
+    res.redirect('/admin/home')
+  }
+  else
+  {
   res.render('admin')
+}
 });
 router.post("/adminlogin", (req, res) => {
   
   if (req.body.username == adminUsername && req.body.password == adminPassword) {
-    
+    req.session.name=adminUsername;
+    req.session.password=adminPassword;
+    req.session.isLoggedIn=true;
     res.redirect("/admin/home")
+
 
   }
   else {
@@ -29,5 +42,9 @@ router.get("/add-user", (req, res) => {
 })
 router.post("/add-user", (req, res) => {
   console.log(req.body);
+})
+router.get('/logout',(req,res)=>{
+  req.session.destroy()
+  res.redirect('/admin')
 })
 module.exports = router;
