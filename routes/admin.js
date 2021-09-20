@@ -1,26 +1,33 @@
 var express = require('express');
+const { localsAsTemplateData } = require('hbs');
 const { render } = require('../app');
 var router = express.Router();
 
-let adminUsername="admin";
-let adminPassword="admin"
+let adminUsername = "admin";
+let adminPassword = "admin"
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
   res.render('admin')
 });
-router.post("/adminlogin",(req,res)=>{
-  console.log("az");
-console.log(req.body.username)
-console.log(req.body.password);
-})
-router.get("/home",function(req,res,next){
+router.post("/adminlogin", (req, res) => {
+  
+  if (req.body.username == adminUsername && req.body.password == adminPassword) {
+    
+    res.redirect("/admin/home")
 
-res.render("adminHome")
-});
-router.get("/add-user",(req,res)=>{
-   res.render("addUser");
+  }
+  else {
+    res.render("admin",{message:"Please enter valid username"})
+  }
 })
-router.post("/add-user",(req,res)=>{
+router.get("/home", function (req, res, next) {
+
+  res.render("adminHome")
+});
+router.get("/add-user", (req, res) => {
+  res.render("addUser");
+})
+router.post("/add-user", (req, res) => {
   console.log(req.body);
 })
 module.exports = router;

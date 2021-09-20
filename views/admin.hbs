@@ -1,14 +1,16 @@
 <main class="form-signin">
-  <form action="/adminlogin" method="POST"> 
+  <form action="/admin/adminlogin" method="POST"> 
     <h1>Admin</h1>
     {{!-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> --}}
     <h1 class="h3 mb-3 fw-normal mt-4">Please sign in</h1>
-
+  
+                    <div class="text-danger mb-2">{{message}}</div>
     <div class="form-floating mt-4">
+
       <input type="name" class="form-control" id="floatingInput" placeholder="Admin" name="username">
       <label for="floatingInput">Username</label>
     </div>
-    <div class="form-floating">
+    <div class="form-floating mt-4">
       <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
       <label for="floatingPassword">Password</label>
     </div>
