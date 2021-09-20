@@ -2,6 +2,7 @@ var express = require('express');
 const session = require('express-session');
 const { localsAsTemplateData } = require('hbs');
 const { render } = require('../app');
+var userHelpers=require("../helpers/user-helpers")
 var router = express.Router();
 let isLoggedIn;
 let adminUsername = "admin";
@@ -34,8 +35,12 @@ router.post("/adminlogin", (req, res) => {
   }
 })
 router.get("/home", function (req, res, next) {
+  userHelpers.getAllUsers().then((users)=>{
+    console.log(users);
+    
+    res.render("adminHome",{users})
+  })
 
-  res.render("adminHome")
 });
 router.get("/add-user", (req, res) => {
   res.render("addUser");

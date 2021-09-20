@@ -36,8 +36,9 @@
 
     <table class="table align-middle">
   <thead>
+   
     <tr>
-      <th scope="col">#</th>
+      {{!-- <th scope="col">#</th> --}}
       <th scope="col">Username</th>
       <th scope="col">Email</th>
       <th scope="col">Phone</th>
@@ -45,12 +46,12 @@
     </tr>
   </thead>
   <tbody>
- 
+     {{#each users}}
     <tr>
-      <th scope="row">2</th>
-      <td>Adipisicing</td>
-      <td>Elit</td>
-      <td>9826877798</td>
+      {{!-- <th scope="row">2</th> --}}
+      <td>{{this.username}}</td>
+      <td>{{this.email}}</td>
+      <td>{{this.phone}}</td>
       <td>
         <button type="button" class="btn btn-danger btn-sm px-3">
           <a href="admin/delete-user" style="text-decoration: none;">
@@ -67,6 +68,7 @@
         </button>
       </td>
     </tr>
+    {{/each}}
     
   </tbody>
 </table>
