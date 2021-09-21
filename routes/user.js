@@ -35,7 +35,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { products});
 });
 router.get('/login',(req,res)=>{
-  res.render('userLogin')
+  res.render('userLogin',{"LoginErr":req.session.loginErr})
+  req.session.loginErr=false
 })
 router.get('/signup',(req,res)=>{
   res.render('userSignup')
@@ -51,6 +52,7 @@ router.post('/login',(req,res)=>{
       res.redirect('/')
     }
     else {
+      res.session.loginErr="Invalid username and password";
       res.redirect('/login')
     }
   })

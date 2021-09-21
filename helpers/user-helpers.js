@@ -1,5 +1,6 @@
 var db=require('../config/connection')
 var collection=require('../config/collection')
+var ObjectId=require('mongodb').ObjectId
 const bcrypt=require('bcrypt');
 module.exports={
     doSignup:(userData)=>{
@@ -51,5 +52,13 @@ module.exports={
                 let user=db.get().collection(collection.USER_COLLECTIONS).find().toArray()
                 resolve(user)
             })
+    },
+    deleteUsers:(userId)=>{
+        return new Promise((resolve,reject)=>{
+            console.log(ObjectId(userId));
+        db.get().collection(collection.USER_COLLECTIONS).deleteOne({_id:ObjectId(userId)}).then((response)=>{
+            resolve(response)
+        })
+        })
     }
 }

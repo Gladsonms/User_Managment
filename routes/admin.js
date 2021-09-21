@@ -1,7 +1,7 @@
 var express = require('express');
 const session = require('express-session');
 const { localsAsTemplateData } = require('hbs');
-const { render } = require('../app');
+const { render, response } = require('../app');
 var userHelpers=require("../helpers/user-helpers")
 var router = express.Router();
 let isLoggedIn;
@@ -51,5 +51,11 @@ router.post("/add-user", (req, res) => {
 router.get('/logout',(req,res)=>{
   req.session.destroy()
   res.redirect('/admin')
+})
+router.get('/deleteUser/:id',(req,res)=>{
+     let userId=req.params.id
+     userHelpers.deleteUsers(userId).then((response)=>{
+       res.redirect('/admin/home')
+     })
 })
 module.exports = router;

@@ -53,14 +53,14 @@
       <td>{{this.email}}</td>
       <td>{{this.phone}}</td>
       <td>
-        <button type="button" class="btn btn-danger btn-sm px-3">
-          <a href="admin/delete-user" style="text-decoration: none;">
+        <button type="button" class="btn btn-danger btn-sm px-3" >
+          <a href="/admin/deleteUser/{{this._id}}" style="text-decoration: none;"  onclick="return confirm('Are you sure to delete {{this.username}} ? ')">
           <span style="text:white">delete</span>
           
           </a>
         </button>
         <button type="button" class="btn btn-warning btn-sm px-3">
-            <a href="admin/edit-user" style="text-decoration: none;">
+            <a href="/admin/editUser/{{this._id}}" style="text-decoration: none;">
             
           <span style="text:white">Edit</span>
             </a>
