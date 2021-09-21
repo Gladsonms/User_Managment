@@ -1,0 +1,27 @@
+
+<section class="mt-5 ml-3 mr-3">
+  <div class="pt-5">
+      <h2 class="text-center">Edit Product</h2>
+  <div class="card container pt-4 pb-4">
+  <form action="/admin/editUser/{{user._id}}" method="POST" >
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Email address</label>
+  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email" value="{{user.email}}">
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">User Name</label>
+  <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="User name" name="username" value="{{user.username}}"> 
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
+  <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Phone Number" name="phone" value="{{user.phone}}">
+</div>
+
+<div class="col-auto">
+    <button type="submit" class="btn btn-primary mb-3">Add User</button>
+  </div>
+  </form>
+</div>
+</div>
+
+</section>

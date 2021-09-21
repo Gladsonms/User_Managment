@@ -58,4 +58,19 @@ router.get('/deleteUser/:id',(req,res)=>{
        res.redirect('/admin/home')
      })
 })
+router.get("/editUser/:id",async(req,res)=>{
+  console.log('this is id')
+  console.log(req.params.id)
+  let user = await userHelpers.getUserDetails(req.params.id)
+  console.log("edit");
+   console.log(user);
+  res.render("editUser",{user})
+})
+router.post("/editUser/:id",async(req,res)=>{
+  console.log(req.body);
+  userHelpers.updateUser(req.params.id,req.body).then(()=>{
+
+    res.redirect('/')
+  })
+})
 module.exports = router;

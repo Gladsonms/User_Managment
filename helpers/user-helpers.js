@@ -2,6 +2,7 @@ var db=require('../config/connection')
 var collection=require('../config/collection')
 var ObjectId=require('mongodb').ObjectId
 const bcrypt=require('bcrypt');
+const { response } = require('../app');
 module.exports={
     doSignup:(userData)=>{
         return new Promise(async(resolve,reject)=>{
@@ -59,6 +60,24 @@ module.exports={
         db.get().collection(collection.USER_COLLECTIONS).deleteOne({_id:ObjectId(userId)}).then((response)=>{
             resolve(response)
         })
+        })
+    },
+    getUserDetails:(userId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.USER_COLLECTIONS).findOne({_id:ObjectId(userId)}).then((user)=>{
+                resolve(user)
+            })
+        })
+    },
+    updateUser:(userId,userDetails)=>{
+        return new Promise((resolve,reject)=>{
+            console.log("last");
+            console.log(userDetails);
+            console.log("end");
+            db.get().collection(collection.USER_COLLECTIONS).updateOne({_id:ObjectId(userId)},{$set:{email:userDetails.email,username:userDetails.username,phone:userDetails.phone}})
+            
+        }).then((response)=>{
+            resolve()
         })
     }
 }
