@@ -11,10 +11,14 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">User Name</a>
+          <a class="nav-link" href="#">{{#if user}}  {{user.username}}  {{else}} Account {{/if}}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
+          {{#if user}}
+          <a class="nav-link" href="/logout">Log out</a>
+          {{else}}
+              <a class="nav-link" href="/login">Log in</a>
+              {{/if}}
         </li>
        
       </ul>
@@ -22,7 +26,7 @@
   </div>
 </nav>
 </header>
-     <section >
+     <section>
      
         <div class="container-fluid">
             <div class="container">

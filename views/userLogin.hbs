@@ -7,10 +7,10 @@
                     <h3 class="text-whitesmoke"></h3>
                     <p class="text-whitesmoke">Sign In</p>
                 <div class="container-content">
-                    {{#if loginErr}}
+                 
                     <form action="/login" method="POST">
                         <div class="form-group mt-4">
-                            <p class="error">{{loginErr}}</p>
+                           
                             <input type="text" class="form-control" placeholder="Username" required="" name="email">
                         </div>
                         <div class="form-group mt-4">
@@ -21,7 +21,7 @@
                         {{!-- <a class="text-darkyellow" href="#"><small>Forgot your password?</small></a> --}}
                         <p class="text-whitesmoke text-center"><small>Do not have an account?</small></p>
                         <a class="text-darkyellow" href="/signup"><small>Sign Up</small></a>
-                        {{/if}}
+                      
                     </form>
                     {{!-- <p class="margin-t text-whitesmoke"><small> Your Name &copy; 2018</small> </p> --}}
                 </div>

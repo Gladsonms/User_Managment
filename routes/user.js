@@ -1,6 +1,7 @@
 const { response } = require('express');
 var express = require('express');
 var router = express.Router();
+const session=require('express-session')
 var userHelpers=require("../helpers/user-helpers")
 
 let products=[
@@ -32,9 +33,12 @@ let products=[
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { products});
+  let user= req.session.user
+
+  res.render('index', { products,user});
 });
 router.get('/login',(req,res)=>{
+
   res.render('userLogin',{"LoginErr":req.session.loginErr})
   req.session.loginErr=false
 })
@@ -50,6 +54,8 @@ router.post('/signup',(req,res)=>{
 router.post('/login',(req,res)=>{
   userHelpers.doLogin(req.body).then((response)=>{
     if(response.status){
+      req.session.loggedIn=true;
+         req.session.user=response.user
       res.redirect('/')
     }
     else {
@@ -57,5 +63,9 @@ router.post('/login',(req,res)=>{
       res.redirect('/login')
     }
   })
+})
+router.get('/logout',(req,res)=>{
+  req.session.destroy()
+  res.redirect('/')
 })
 module.exports = router;
