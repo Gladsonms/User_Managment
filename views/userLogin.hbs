@@ -9,9 +9,12 @@
                 <div class="container-content">
                  
                     <form action="/login" method="POST">
+                    {{#if LoginErr}}
+            <p class="errr text-light">invalid username or password</p>
+                    {{/if}}
                         <div class="form-group mt-4">
                            
-                            <input type="text" class="form-control" placeholder="Username" required="" name="email">
+                            <input type="text" class="form-control" placeholder="email" required="" name="email">
                         </div>
                         <div class="form-group mt-4">
                             <input type="password" class="form-control" placeholder="*****" required="" name="password">
