@@ -9,16 +9,21 @@
                 <div class="container-content">
                     <form action="/signup" method="POST">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Username" required="" name="username">
+                            <input type="text" class="form-control" placeholder="Username" required="" name="username" id="usersName">
+                            <span class="text-danger" id="nameError"></span>
                         </div>
                          <div class="form-group mt-4">
-                            <input type="text" class="form-control" placeholder="email" required="" name="email">
+                            <input type="text" class="form-control" placeholder="email" required="" name="email" id="email">
+                             <span class="text-danger" id="mailError"></span>
+
                         </div>
                         <div class="form-group mt-4">
-                            <input type="text" class="form-control" placeholder="phone" required="" name="phone">
+                            <input type="text" class="form-control" placeholder="phone" required="" name="phone" id="phone">
+                            <span class="text-danger" id="phoneError"></span>
                         </div>
                         <div class="form-group mt-4">
-                            <input type="password" class="form-control" placeholder="password" required="" name="password">
+                            <input type="password" class="form-control" placeholder="password" required="" name="password" id="password">
+                            <span class="text-danger" id="passwordError"></span>
                         </div>
                         {{!-- <div class="form-group mt-4">
                             <input type="password" class="form-control" placeholder="confirm password" required="">
@@ -34,6 +39,105 @@
             </div>
 </body>
 </section>
+<script>
+    //name
+    var nameField=document.getElementById('usersName')
+    var validname=false;
+    nameField.addEventListener('input',()=>{
+        var name=nameField.value
+        var nameRegex=/^[a-zA-Z ]+$/
+
+    if(name.length==0){
+        text="Please Enter your Name";
+        nameError.innerHTML = text;
+        validname=false;
+    } 
+    else if(name.length<5){
+        console.log(name.length);
+        nameError.innerHTML="Name should be more than 4 Characters"
+        validname=false;
+    }
+    else if(name.includes('  ')){
+        nameError.innerHTML="Name should not contain 2 concecutive spaces"
+        validname=false;
+
+
+    }
+    else if(!name.match(nameRegex))
+    {
+        text="Name Should not contain numeric value"
+        nameError.innerHTML=text;
+        return false;
+    }
+    else{
+
+        validname=true;
+        nameError.innerHTML=" ";
+   
+}
+    })
+ 
+ //////To check email vlaid or not
+var emailField = document.getElementById('email')
+var validmail=false;
+emailField.addEventListener('input',()=>{
+    var email=emailField.value
+    var regexEmail = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
+    if(email.length==0){
+        text="This field cannot be empty";
+         validmail=false;
+         mailError.innerHTML = text;
+       
+    }else if (!email.match(regexEmail)) {
+        mailError.innerHTML = 'This email id is not valid.'
+        validmail=false;
+      } else {
+        validmail=true;
+        mailError.innerHTML = ''
+      
+    }
+    
+})
+////To Check Number is valid or not
+var phoneField = document.getElementById('phone')
+var validphone=false;
+phoneField.addEventListener('input',()=>{
+    var phone=phoneField.value
+    if(isNaN(phone) || phone.length==0){
+         validphone=false;
+        text="This field should not be blank";
+        phoneError.innerHTML = text;
+   
+} else if(isNaN(phone) || phone.length!=10){
+     validphone=false;
+    text="Please Enter Valid Number";
+    phoneError.innerHTML = text;
+   
+}else{
+    phoneError.innerHTML=" ";
+     validphone=true;
+}     
+})
+/////To check message is on or present or not
+var passwordField=document.getElementById('password')
+var validpassword=false;
+passwordField.addEventListener('input',()=>{
+    var password=passwordField.value
+    if(password.length<=6){
+        validpassword=false;
+        text="Please Enter More Than 6 Characters"
+        passwordError.innerHTML = text;
+       
+    }else{
+        validpassword=true;
+        text=" "
+        passwordError.innerHTML=text;
+        
+    }
+})
+
+
+</script>
 <style>
     html {
     height: 100%;
