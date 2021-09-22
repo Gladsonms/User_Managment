@@ -2,24 +2,37 @@ var db=require('../config/connection')
 var collection=require('../config/collection')
 var ObjectId=require('mongodb').ObjectId
 const bcrypt=require('bcrypt');
-const { response } = require('../app');
+
+const { get } = require('../routes/admin');
+const { USER_COLLECTIONS } = require('../config/collection');
 module.exports={
     doSignup:(userData)=>{
         return new Promise(async(resolve,reject)=>{
-            userData.password=await bcrypt.hash(userData.password,10)
-            db.get().collection(collection.USER_COLLECTIONS).insertOne(userData).then((data)=>{
-             //   resolve(data.ops[0])
-            })
-            .catch(()=>{
-                console.log("Error signup");
-            })
+            let signupStatus=false;
+            let newUser=await db.get().collection(collection.USER_COLLECTIONS).findOne({email:userData.email})
+            if (!newUser){
+                signupStatus=true
+                userData.password=await bcrypt.hash(userData.password,10)
+                db.get().collection(collection.USER_COLLECTIONS).insertOne(userData).then((data)=>{
+                 //   resolve(data.ops[0])
+                 resolve({signupStatus})
+                })
+                .catch(()=>{
+                    console.log("Error signup");
+                })
+            }
+            else
+            {
+                console.log("user already exist");
+                resolve({signupStatus:false})
+            }
             
         })
         
     },
     doLogin:(userData)=>{
         return new Promise(async(resolve,reject)=>{
-            let laginStatus=false;
+            let loginStatus=false;
             let  response={}
             console.log(userData);
               let user=await db.get().collection(collection.USER_COLLECTIONS).findOne({email:userData.email})

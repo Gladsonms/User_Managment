@@ -43,14 +43,28 @@ router.get('/login',(req,res)=>{
   req.session.loginErr=false
 })
 router.get('/signup',(req,res)=>{
-  res.render('userSignup')
+
+  if(req.session.signupErr){
+   let  signupStatus=req.session.signupErr
+    res.render('userSignup',{signupStatus})
+  }
+  else{
+    res.render('userSignup')
+  }
 })
 router.post('/signup',(req,res)=>{
   userHelpers.doSignup(req.body).then((response)=>{
          console.log(response);
-         
+         if (response.signupStatus){
+
+           res.redirect('/login')
+         }
+         else
+         {
+           req.session.signupErr=true
+           res.redirect('/signup')
+         }
         })
-        res.redirect('/login')
 })
 router.post('/login',(req,res)=>{
   userHelpers.doLogin(req.body).then((response)=>{

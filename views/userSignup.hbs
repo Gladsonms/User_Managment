@@ -8,6 +8,9 @@
                     {{!-- <p class="text-whitesmoke">Sign In</p> --}}
                 <div class="container-content">
                     <form action="/signup" method="POST">
+                    {{#if signupStatus}}
+                <p class="text-light">User already exist please login</p>
+                    {{/if}}
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Username" required="" name="username" id="usersName">
                             <span class="text-danger" id="nameError"></span>
