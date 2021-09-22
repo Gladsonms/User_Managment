@@ -42,11 +42,13 @@ router.get("/home", function (req, res, next) {
   })
 
 });
-router.get("/add-user", (req, res) => {
+router.get("/addUser", (req, res) => {
   res.render("addUser");
 })
-router.post("/add-user", (req, res) => {
-  
+router.post("/addUser", (req, res) => {
+  userHelpers.addUser(req.body).then((response)=>{
+    console.log(response);
+  })
 })
 router.get('/logout',(req,res)=>{
   req.session.destroy()
@@ -73,4 +75,5 @@ router.post("/editUser/:id",async(req,res)=>{
     res.redirect('/')
   })
 })
+
 module.exports = router;
