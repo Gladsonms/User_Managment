@@ -9,7 +9,7 @@ let adminUsername = "admin";
 let adminPassword = "admin"
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-  console.log("hshi");
+  
   console.log(req,session.isLoggedIn);
   if(req.session.isLoggedIn)
   {
@@ -37,8 +37,14 @@ router.post("/adminlogin", (req, res) => {
 router.get("/home", function (req, res, next) {
   userHelpers.getAllUsers().then((users)=>{
     console.log(users);
-    
-    res.render("adminHome",{users})
+    if(req.session.isLoggedIn) {
+
+      res.render("adminHome",{users})
+    }
+    else
+    {
+      res.render("admin")
+    }
   })
 
 });
