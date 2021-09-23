@@ -7,14 +7,18 @@
 <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">Email address</label>
   <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email" value="{{user.email}}">
+  <span class="text-danger" id="mailError"></span>
 </div>
 <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">User Name</label>
   <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="User name" name="username" value="{{user.username}}"> 
+   <span class="text-danger" id="nameError"></span>
 </div>
 <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
   <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Phone Number" name="phone" value="{{user.phone}}">
+  
+
 </div>
 
 <div class="col-auto">

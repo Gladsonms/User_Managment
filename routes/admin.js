@@ -44,16 +44,22 @@ router.get("/home", function (req, res, next) {
 });
 
 router.get("/addUser", (req, res) => {
+  //console.log(signupStatus);
   res.render("addUser");
 })
+
+
 router.post("/addUser", (req, res) => {
   userHelpers.addUser(req.body).then((response)=>{
     console.log(response);
+    res.redirect('/admin/home')
   })
 })
+
+
 router.get('/logout',(req,res)=>{
   req.session.destroy()
-  res.redirect('/admin')
+  res.redirect('/admin/home')
 })
 router.get('/deleteUser/:id',(req,res)=>{
      let userId=req.params.id
@@ -73,7 +79,7 @@ router.post("/editUser/:id",async(req,res)=>{
   console.log(req.body);
   userHelpers.updateUser(req.params.id,req.body).then(()=>{
 
-    res.redirect('/')
+    res.redirect('/admin/home')
   })
 })
 
