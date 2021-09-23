@@ -38,8 +38,17 @@ router.get('/', function(req, res, next) {
   res.render('index', { products,user});
 });
 router.get('/login',(req,res)=>{
+  if(req.session.user)
+  {
+       res.redirect('/')
+      }
+      else
+      {
 
-  res.render('userLogin',{"LoginErr":req.session.loginErr})
+        res.render('userLogin',{"LoginErr":req.session.loginErr})
+      }
+
+
   req.session.loginErr=false
 })
 router.get('/signup',(req,res)=>{
@@ -75,12 +84,14 @@ router.post('/login',(req,res)=>{
     }
     else {
       req.session.loginErr=true;
+      
       res.redirect('/login')
     }
   })
 })
 router.get('/logout',(req,res)=>{
   req.session.destroy()
+  res.header('Cache-control','private, no-cache,no-store,max-age=0,must-revalidate,pre-check=0,post-check=0')
   res.redirect('/')
 })
 module.exports = router;

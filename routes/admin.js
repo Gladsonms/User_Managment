@@ -17,6 +17,8 @@ router.get('/', function (req, res, next) {
   else
   {
   res.render('admin')
+  res.header('Cache-control','private, no-cache,no-store,max-age=0,must-revalidate,pre-check=0,post-check=0')
+
 }
 });
 router.post("/adminlogin", (req, res) => {
