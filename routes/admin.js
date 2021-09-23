@@ -61,7 +61,7 @@ router.post("/addUser", (req, res) => {
 
 router.get('/logout',(req,res)=>{
   req.session.destroy()
-  res.redirect('/admin/home')
+  res.redirect('/admin')
 })
 router.get('/deleteUser/:id',(req,res)=>{
      let userId=req.params.id
