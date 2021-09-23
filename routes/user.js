@@ -2,7 +2,7 @@ const { response } = require('express');
 var express = require('express');
 var router = express.Router();
 const session=require('express-session')
-var userHelpers=require("../helpers/user-helpers")
+var userHelpers=require("../helpers/userHelper")
 
 let products=[
   {

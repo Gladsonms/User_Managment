@@ -1,16 +1,15 @@
 var express = require('express');
-const session = require('express-session');
-const { localsAsTemplateData } = require('hbs');
-const { render, response } = require('../app');
-var userHelpers=require("../helpers/user-helpers")
+  
+
 var router = express.Router();
+const userHelpers=require("../helpers/userHelper")
 let isLoggedIn;
 let adminUsername = "admin";
 let adminPassword = "admin"
 /* GET users listing. */
 router.get('/', function (req, res, next) {
   
-  console.log(req,session.isLoggedIn);
+  console.log(req.session.isLoggedIn);
   if(req.session.isLoggedIn)
   {
     res.redirect('/admin/home')
@@ -35,19 +34,15 @@ router.post("/adminlogin", (req, res) => {
   }
 })
 router.get("/home", function (req, res, next) {
-  userHelpers.getAllUsers().then((users)=>{
-    console.log(users);
-    if(req.session.isLoggedIn) {
-
-      res.render("adminHome",{users})
-    }
-    else
-    {
-      res.render("admin")
-    }
-  })
+ userHelpers.getAllUserDetails().then((data)=>{
+   res.render('adminHome',{users:data})
+ }).catch((er)=>{
+   console.log(er)
+ })
+  
 
 });
+
 router.get("/addUser", (req, res) => {
   res.render("addUser");
 })

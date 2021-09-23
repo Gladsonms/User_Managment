@@ -2,10 +2,15 @@ var db=require('../config/connection')
 var collection=require('../config/collection')
 var ObjectId=require('mongodb').ObjectId
 const bcrypt=require('bcrypt');
-
-const { get } = require('../routes/admin');
-const { USER_COLLECTIONS } = require('../config/collection');
+ 
 module.exports={
+    getAllUserDetails:()=>{
+        return new Promise(async (resolve,reject)=>{
+        
+            var reuslts= await db.get().collection(collection.USER_COLLECTIONS).find().toArray() 
+            resolve(reuslts)
+        })
+    },
     doSignup:(userData)=>{
         return new Promise(async(resolve,reject)=>{
             let signupStatus=false;
@@ -61,12 +66,7 @@ module.exports={
         })
 
     },
-    getAllUsers:()=>{
-            return new Promise((resolve,reject)=>{
-                let user=db.get().collection(collection.USER_COLLECTIONS).find().toArray()
-                resolve(user)
-            })
-    },
+     
     deleteUsers:(userId)=>{
         return new Promise((resolve,reject)=>{
             console.log(ObjectId(userId));
@@ -104,4 +104,7 @@ module.exports={
 
         })
     }
+    ,
+     
+     
 }
