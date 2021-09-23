@@ -1,22 +1,22 @@
 
 <section class="mt-5 ml-3 mr-3">
   <div class="pt-5">
-      <h2 class="text-center">Edit Product</h2>
+     <h2 class="text-center">Edit User</h2>
   <div class="card container pt-4 pb-4">
-  <form action="/admin/editUser/{{user._id}}" method="POST" >
+    <form action="/admin/editUser/{{user._id}}" method="POST" >
 <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">Email address</label>
-  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email" value="{{user.email}}">
+  <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email" value="{{user.email}}">
   <span class="text-danger" id="mailError"></span>
 </div>
 <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">User Name</label>
-  <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="User name" name="username" value="{{user.username}}"> 
+  <input type="name" class="form-control" id="username" placeholder="User name" name="username" value="{{user.username}}"> 
    <span class="text-danger" id="nameError"></span>
 </div>
 <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
-  <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Phone Number" name="phone" value="{{user.phone}}">
+  <input type="number" class="form-control" id="phone" placeholder="Phone Number" name="phone" value="{{user.phone}}">
   
 
 </div>
@@ -29,3 +29,85 @@
 </div>
 
 </section>
+<script>
+    //name
+    var nameField=document.getElementById('username')
+    var validname=false;
+    nameField.addEventListener('input',()=>{
+        var name=nameField.value
+        var nameRegex=/^[a-zA-Z ]+$/
+
+    if(name.length==0){
+        text="Please Enter your Name";
+        nameError.innerHTML = text;
+        validname=false;
+    } 
+    else if(name.length<5){
+        console.log(name.length);
+        nameError.innerHTML="Name should be more than 4 Characters"
+        validname=false;
+    }
+    else if(name.includes('  ')){
+        nameError.innerHTML="Name should not contain 2 concecutive spaces"
+        validname=false;
+
+
+    }
+    else if(!name.match(nameRegex))
+    {
+        text="Name Should not contain numeric value"
+        nameError.innerHTML=text;
+        return false;
+    }
+    else{
+
+        validname=true;
+        nameError.innerHTML=" ";
+   
+}
+    })
+ 
+ //////To check email vlaid or not
+var emailField = document.getElementById('email')
+var validmail=false;
+emailField.addEventListener('input',()=>{
+    var email=emailField.value
+    var regexEmail = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
+    if(email.length==0){
+        text="This field cannot be empty";
+         validmail=false;
+         mailError.innerHTML = text;
+       
+    }else if (!email.match(regexEmail)) {
+        mailError.innerHTML = 'This email id is not valid.'
+        validmail=false;
+      } else {
+        validmail=true;
+        mailError.innerHTML = ''
+      
+    }
+    
+})
+////To Check Number is valid or not
+var phoneField = document.getElementById('phone')
+var validphone=false;
+phoneField.addEventListener('input',()=>{
+    var phone=phoneField.value
+    if(isNaN(phone) || phone.length==0){
+         validphone=false;
+        text="This field should not be blank";
+        phoneError.innerHTML = text;
+   
+} else if(isNaN(phone) || phone.length!=10){
+     validphone=false;
+    text="Please Enter Valid Number";
+    phoneError.innerHTML = text;
+   
+}else{
+    phoneError.innerHTML=" ";
+     validphone=true;
+}     
+})
+
+
+</script>

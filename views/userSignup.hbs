@@ -9,7 +9,7 @@
                 <div class="container-content">
                     <form action="/signup" method="POST">
                     {{#if signupStatus}}
-                <p class="text-light">User already exist please login</p>
+                <p class="text-danger">User already exist please login</p>
                     {{/if}}
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Username" required="" name="username" id="usersName">
