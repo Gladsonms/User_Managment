@@ -7,7 +7,7 @@
                     <h3 class="text-whitesmoke">Sign up</h3>
                     {{!-- <p class="text-whitesmoke">Sign In</p> --}}
                 <div class="container-content">
-                    <form action="/signup" method="POST">
+                    <form action="/signup" method="POST" onsubmit="return checksubmit()">
                     {{#if signupStatus}}
                 <p class="text-danger">User already exist please login</p>
                     {{/if}}
@@ -138,7 +138,16 @@ passwordField.addEventListener('input',()=>{
         
     }
 })
-
+function checksubmit(){
+    if(validmail && validname && validpassword && validphone)
+    {
+        return true
+    }
+    else
+    {
+        return false
+    }
+}
 
 </script>
 <style>

@@ -133,6 +133,15 @@ passwordField.addEventListener('input',()=>{
         
     }
 })
-
+function checksubmit(){
+    if(validmail && validname && validpassword && validphone)
+    {
+        return true
+    }
+    else
+    {
+        return false
+    }
+}
 
 </script>
