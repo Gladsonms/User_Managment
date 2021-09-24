@@ -59,10 +59,7 @@ router.post("/addUser", (req, res) => {
 })
 
 
-router.get('/logout',(req,res)=>{
-  req.session.destroy()
-  res.redirect('/admin')
-})
+
 router.get('/deleteUser/:id',(req,res)=>{
      let userId=req.params.id
      userHelpers.deleteUsers(userId).then((response)=>{
@@ -85,4 +82,9 @@ router.post("/editUser/:id",async(req,res)=>{
   })
 })
 
+router.get('/logout',(req,res)=>{
+  req.session.destroy()
+  res.header('Cache-control','private, no-cache,no-store,max-age=0,must-revalidate,pre-check=0,post-check=0')
+  res.redirect('/admin')
+})
 module.exports = router;
