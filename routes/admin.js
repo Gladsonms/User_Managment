@@ -77,7 +77,7 @@ router.get("/editUser/:id",async(req,res)=>{
 router.post("/editUser/:id",async(req,res)=>{
   console.log(req.body);
   userHelpers.updateUser(req.params.id,req.body).then(()=>{
-
+    console.log("ntha avathe");
     res.redirect('/admin/home')
   })
 })

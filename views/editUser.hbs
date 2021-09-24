@@ -17,7 +17,7 @@
 <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
   <input type="number" class="form-control" id="phone" placeholder="Phone Number" name="phone" value="{{user.phone}}">
-  
+  <span class="text-danger" id="phoneError"></span>
 
 </div>
 
@@ -108,8 +108,10 @@ phoneField.addEventListener('input',()=>{
      validphone=true;
 }     
 })
+
 function checksubmit(){
-    if(validmail && validname && validpassword && validphone)
+    console.log(validphone,validname,validmail)
+    if(validmail && validname  && validphone)
     {
         return true
     }
