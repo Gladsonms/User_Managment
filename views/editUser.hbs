@@ -3,7 +3,7 @@
   <div class="pt-5">
      <h2 class="text-center">Edit User</h2>
   <div class="card container pt-4 pb-4">
-    <form action="/admin/editUser/{{user._id}}" method="POST" onsubmit="return checksubmit()">
+    <form action="/admin/editUser/{{user._id}}" method="POST" >
 <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">Email address</label>
   <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email" value="{{user.email}}">
@@ -29,7 +29,7 @@
 </div>
 
 </section>
-<script>
+{{!-- <script>
     //name
     var nameField=document.getElementById('username')
     var validname=false;
@@ -121,4 +121,4 @@ function checksubmit(){
     }
 }
 
-</script>
+</script> --}}
